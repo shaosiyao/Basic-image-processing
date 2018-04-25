@@ -18,7 +18,7 @@ for ii=k+1:mm+k
         tempmat=A2(ii-k:ii+k-1,jj-p:jj+p-1);
         calvec=reshape(tempmat,[m*n 1]);
         level=graythresh(calvec);
-        newA2(ii,jj)=~(A2(ii,jj)>level); %% dark object with bright BG, threshold one pixel at each iteration
+        newA2(ii,jj)=~(A2(ii,jj)>level); % dark object with bright BG, threshold one pixel at each step
     end
 end
 newA=newA2(k+1:mm+k,p+1:nn+p);
@@ -29,7 +29,7 @@ sobelImage = imgradient(grayImage, 'Sobel');
 sdImage = stdfilt(sobelImage, ones(9));
 % Do a global Otsu of the stddev image.
 
-binaryImage = sdImage > 25; %% adjustable, based on SNR
+binaryImage = sdImage > 25; % adjustable, based on SNR
 
-% thresholded = (newA&binaryImage);
-thresholded = newA;
+thresholded = (newA&binaryImage);
+% thresholded = newA;

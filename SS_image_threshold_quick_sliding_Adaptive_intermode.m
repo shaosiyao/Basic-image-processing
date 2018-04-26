@@ -27,7 +27,7 @@ for ii=k+1:mm+k
         done=abs(level-levelnext)<0.5;
         level=levelnext;
         end
-        newA2(ii,jj)=~(A2(ii,jj)>(level-55));%% dark object with bright BG, threshold one pixel at each iteration
+        newA2(ii,jj)=~(A2(ii,jj)>(level));% dark object with bright BG, threshold one pixel at each iteration
 %         newA2(ii,jj)=~(A2(ii,jj)>(level-15)); 
     end
 end
